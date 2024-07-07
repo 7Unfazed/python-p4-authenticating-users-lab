@@ -3,6 +3,9 @@
 from flask import Flask, make_response, jsonify, request, session
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
+from Resources.login import LoginResource
+from Resources.logout import LogoutResource
+from Resources.check_session import CheckSessionResource
 
 from models import db, Article, User
 
@@ -51,6 +54,9 @@ class ShowArticle(Resource):
 api.add_resource(ClearSession, '/clear')
 api.add_resource(IndexArticle, '/articles')
 api.add_resource(ShowArticle, '/articles/<int:id>')
+api.add_resource(LoginResource, '/login')
+api.add_resource(LogoutResource, '/logout')
+api.add_resource(CheckSessionResource, '/check_session')
 
 
 if __name__ == '__main__':
